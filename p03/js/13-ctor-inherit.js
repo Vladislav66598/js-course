@@ -1,0 +1,35 @@
+'use strict'
+
+function Product(name, price) {
+    this.name = name
+    this.price = price
+}
+Product.prototype.describe = function () {
+    return `${this.name}: ${this.price} ₽`
+}
+Product.prototype.shippingCost = function () {return 300}
+
+function DigitalProduct(name, price, sizeMB) {
+    Product.call(this, name, price) // 1. свойства родителя
+    this.sizeMB = sizeMB 
+}
+
+// 2. цепочка прототипов
+DigitalProduct.prototype = Object.create(Product.prototype)
+DigitalProduct.prototype.constructor = DigitalProduct
+
+// 3. переопределение и вызов метода родителя
+DigitalProduct.prototype.shippingCost = function () {return 0}
+DigitalProduct.prototype.describe = function () {
+    return Product.prototype.describe.call(this) + ` (${this.sizeMB} МБ)`
+}
+
+const ebook = new DigitalProduct('книга', 450, 12)
+console.log(ebook)
+console.log(ebook.describe)
+console.log(ebook instanceof DigitalProduct, ebook instanceof Product)
+
+const order = [new Product('клавиатура', 1250), ebook, new Product('мышь', 790)]
+let shipping = 0
+for (const item of order) shipping += item.shippingCost()
+console.log('доставка заказа:', shipping)
