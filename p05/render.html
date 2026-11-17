@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Каталог</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 24px; }
+        .list { display: flex; gap: 16px; flex-wrap: wrap; }
+        .card { border: 1px solid #ccc; border-radius: 8px; padding: 12px; width: 180px; }
+        .card h3 { margin: 0 0 8px; font-size: 18px; }
+        .price { font-weight: bold; }
+        .old { color: #999; text-decoration: line-through; margin-left: 6px; }
+        .badge { display: inline-block; margin-top: 8px; padding: 2px 8px; background: #fde2e2; color: #b00020; border-radius: 4px; font-size: 13px; }
+    </style>
+</head>
+<body>
+    <h1>Каталог</h1>
+    <div id="catalog" class="list"></div>
+    <script src="js/06-render.js"></script>
+</body>
+</html>
