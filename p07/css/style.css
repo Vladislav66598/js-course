@@ -11,3 +11,6 @@ main { padding: 8px 32px 24px; }
 .hidden { display: none; }
 .selected { outline: 3px solid #1a73e8; }
 .note { color: #777; font-size: 14px; }
+.highlight {
+    color: red;
+}
